@@ -11,14 +11,28 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var playButton: UIButton!
+    
+    let animationDuration = 0.4
+    
     var audioPlayer: AVAudioPlayer!
     var playing = false {
         didSet {
             if playing {
                 audioPlayer.play()
+                
+                UIView.animateWithDuration(animationDuration) {
+                    self.view.backgroundColor = UIColor.blackColor()
+                    self.playButton.tintColor = UIColor.whiteColor()
+                }
             }
             else {
                 audioPlayer.stop()
+                
+                UIView.animateWithDuration(animationDuration) {
+                    self.view.backgroundColor = UIColor.whiteColor()
+                    self.playButton.tintColor = UIColor.blackColor()
+                }
             }
         }
     }
@@ -34,6 +48,8 @@ class ViewController: UIViewController {
         catch _ {}
         audioPlayer.numberOfLoops = -1
         audioPlayer.prepareToPlay()
+        
+        playing = false
     }
 
     override func didReceiveMemoryWarning() {

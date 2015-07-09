@@ -34,6 +34,9 @@
                             <constraint firstItem="CGK-RG-2Lh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oSf-PW-MOF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="CGK-RG-2Lh" id="Lv1-c8-2J5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
