@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var audioPlayer: AVAudioPlayer!
     var playing = false {
         didSet {
+            setNeedsStatusBarAppearanceUpdate()
+            
             if playing {
                 audioPlayer.play()
                 
@@ -52,9 +54,13 @@ class ViewController: UIViewController {
         playing = false
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        if playing {
+            return .LightContent
+        }
+        else {
+            return .Default
+        }
     }
 
 
