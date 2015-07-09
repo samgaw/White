@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+    
+    var audioPlayer: AVAudioPlayer!
+    var playing = false {
+        didSet {
+            if playing {
+                audioPlayer.play()
+            }
+            else {
+                audioPlayer.stop()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("rain", ofType: "m4a")!)
+        audioPlayer = AVAudioPlayer()
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: sound)
+        }
+        catch _ {}
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.prepareToPlay()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +42,8 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func playTapped(sender: UIButton) {
+        playing = !playing
+    }
 }
 
