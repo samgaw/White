@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     
     let animationDuration = 0.4
+    let darkGrayColor = UIColor(white: 0.2, alpha: 1)
     
     var audioPlayer: AVAudioPlayer!
     var playing = false {
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
                 audioPlayer.play()
                 
                 UIView.animateWithDuration(animationDuration) {
-                    self.view.backgroundColor = UIColor.blackColor()
+                    self.view.backgroundColor = self.darkGrayColor
                     self.playButton.tintColor = UIColor.whiteColor()
                 }
             }
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
                 
                 UIView.animateWithDuration(animationDuration) {
                     self.view.backgroundColor = UIColor.whiteColor()
-                    self.playButton.tintColor = UIColor.blackColor()
+                    self.playButton.tintColor = self.darkGrayColor
                 }
             }
         }
