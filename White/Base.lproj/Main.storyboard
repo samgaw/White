@@ -16,13 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGK-RG-2Lh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGK-RG-2Lh" customClass="SpringButton" customModule="White" customModuleProvider="target">
                                 <rect key="frame" x="187.5" y="162" width="225" height="276"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="eZY-2v-xuA"/>
-                                    <constraint firstAttribute="height" constant="276" id="vgH-WI-anv"/>
+                                    <constraint firstAttribute="width" priority="250" constant="225" id="eZY-2v-xuA"/>
+                                    <constraint firstAttribute="height" priority="250" constant="276" id="vgH-WI-anv"/>
                                 </constraints>
                                 <state key="normal" title="Play" image="rain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="multiplier">
+                                        <real key="value" value="1.2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="damping">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="springVelocity">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vx3-dC-U0M"/>
                                 </connections>
