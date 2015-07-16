@@ -13,6 +13,8 @@
 		1A0A4B2E1B4E3A7300CDF2F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A4B2D1B4E3A7300CDF2F6 /* Assets.xcassets */; };
 		1A0A4B311B4E3A7300CDF2F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A4B2F1B4E3A7300CDF2F6 /* LaunchScreen.storyboard */; };
 		1A0A4B3A1B4E3B0000CDF2F6 /* rain.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A4B381B4E3AEE00CDF2F6 /* rain.m4a */; };
+		1A3BDB441B577B0800168B26 /* cafe.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BDB421B577AFE00168B26 /* cafe.m4a */; };
+		1A3BDB451B577B0800168B26 /* night.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BDB431B577AFE00168B26 /* night.m4a */; };
 		1AF9513E1B4F8D800030CA42 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9513D1B4F8D800030CA42 /* SpringButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		1A0A4B301B4E3A7300CDF2F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0A4B321B4E3A7300CDF2F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A0A4B381B4E3AEE00CDF2F6 /* rain.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rain.m4a; sourceTree = "<group>"; };
+		1A3BDB421B577AFE00168B26 /* cafe.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cafe.m4a; sourceTree = "<group>"; };
+		1A3BDB431B577AFE00168B26 /* night.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = night.m4a; sourceTree = "<group>"; };
 		1AF9513D1B4F8D800030CA42 /* SpringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +78,8 @@
 			children = (
 				1A0A4B2D1B4E3A7300CDF2F6 /* Assets.xcassets */,
 				1A0A4B381B4E3AEE00CDF2F6 /* rain.m4a */,
+				1A3BDB421B577AFE00168B26 /* cafe.m4a */,
+				1A3BDB431B577AFE00168B26 /* night.m4a */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -135,6 +141,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3BDB441B577B0800168B26 /* cafe.m4a in Resources */,
+				1A3BDB451B577B0800168B26 /* night.m4a in Resources */,
 				1A0A4B3A1B4E3B0000CDF2F6 /* rain.m4a in Resources */,
 				1A0A4B311B4E3A7300CDF2F6 /* LaunchScreen.storyboard in Resources */,
 				1A0A4B2E1B4E3A7300CDF2F6 /* Assets.xcassets in Resources */,

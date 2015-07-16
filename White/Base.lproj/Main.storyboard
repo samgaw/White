@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGK-RG-2Lh" customClass="SpringButton" customModule="White" customModuleProvider="target">
-                                <rect key="frame" x="187.5" y="162" width="225" height="276"/>
+                                <rect key="frame" x="187" y="162" width="225" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="225" id="eZY-2v-xuA"/>
                                     <constraint firstAttribute="height" priority="250" constant="276" id="vgH-WI-anv"/>
@@ -41,15 +41,58 @@
                                     <action selector="playTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vx3-dC-U0M"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wVl-X3-wHj">
+                                <rect key="frame" x="200" y="388" width="200" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4J-mK-cga">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <state key="normal" image="cafe-small"/>
+                                        <connections>
+                                            <action selector="musicButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7NQ-4Y-A9Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiz-MA-olN">
+                                        <rect key="frame" x="70" y="0.0" width="60" height="60"/>
+                                        <state key="normal" image="rain-small"/>
+                                        <connections>
+                                            <action selector="musicButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OL6-sG-Wwt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J82-63-SZh">
+                                        <rect key="frame" x="140" y="0.0" width="60" height="60"/>
+                                        <state key="normal" image="night-small"/>
+                                        <connections>
+                                            <action selector="musicButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cf6-CH-X5a"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fb-7h-2wZ">
+                                <rect key="frame" x="270" y="446" width="60" height="60"/>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="changeMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="91E-fb-fbR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6fb-7h-2wZ" firstAttribute="top" secondItem="CGK-RG-2Lh" secondAttribute="bottom" constant="8" id="4vr-iu-vre"/>
+                            <constraint firstItem="wVl-X3-wHj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ADt-b7-96b"/>
                             <constraint firstItem="CGK-RG-2Lh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GXc-dp-HxP"/>
+                            <constraint firstItem="6fb-7h-2wZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QKt-3A-F9k"/>
+                            <constraint firstItem="wVl-X3-wHj" firstAttribute="top" secondItem="CGK-RG-2Lh" secondAttribute="bottom" constant="-50" id="ige-fw-RVw"/>
                             <constraint firstItem="CGK-RG-2Lh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oSf-PW-MOF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cafeMusicButton" destination="h4J-mK-cga" id="qhQ-gW-a5V"/>
+                        <outlet property="changeMusicButton" destination="6fb-7h-2wZ" id="nQe-9C-g4J"/>
+                        <outlet property="musicSwitcherStackView" destination="wVl-X3-wHj" id="yto-zh-lZG"/>
+                        <outlet property="musicSwitcherTopConstraint" destination="ige-fw-RVw" id="wEa-nd-Bu0"/>
+                        <outlet property="nightMusicButton" destination="J82-63-SZh" id="Z3N-6A-Q3X"/>
                         <outlet property="playButton" destination="CGK-RG-2Lh" id="Lv1-c8-2J5"/>
+                        <outlet property="rainMusicButton" destination="xiz-MA-olN" id="vQu-Bo-pbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -57,6 +100,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cafe-small" width="60" height="60"/>
+        <image name="night-small" width="60" height="60"/>
         <image name="rain" width="612" height="792"/>
+        <image name="rain-small" width="60" height="60"/>
+        <image name="refresh" width="60" height="60"/>
     </resources>
 </document>
