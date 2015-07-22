@@ -126,6 +126,22 @@ class ViewController: UIViewController {
         default:
             break
         }
+        
+        let upperView = UIView(frame: view.frame)
+        upperView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        view.insertSubview(upperView, belowSubview: musicSwitcherStackView)
+        
+        let maskLayer = CALayer()
+        maskLayer.backgroundColor = UIColor.blackColor().CGColor
+        maskLayer.frame = sender.convertRect(sender.bounds, toView: view)
+        maskLayer.cornerRadius = maskLayer.frame.height / 2
+        
+        UIView.animateWithDuration(1) {
+            maskLayer.frame = CGRectMake(-100, -100, 1000, 1000)
+            maskLayer.cornerRadius = 100
+        }
+        
+        upperView.layer.mask = maskLayer
     }
 
     @IBAction func playTapped(sender: UIButton) {
