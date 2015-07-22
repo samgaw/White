@@ -20,6 +20,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var rainMusicButton: UIButton!
     @IBOutlet weak var nightMusicButton: UIButton!
     
+    enum Music: String {
+        case Cafe = "cafe"
+        case Rain = "rain"
+        case Night = "night"
+        
+        var backgroundColor: UIColor {
+            switch self {
+            case .Cafe:
+                return UIColor(red:0.29, green:0, blue:0, alpha:1)
+            case .Rain:
+                return UIColor(red:0, green:0.4, blue:0.63, alpha:1)
+            case .Night:
+                return UIColor(white: 0.2, alpha: 1)
+            }
+        }
+    }
+    var currentMusic: Music = .Cafe {
+        didSet {
+            currentMusicURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(currentMusic.rawValue, ofType: "m4a")!)
+        }
+    }
+    
     let animationDuration = 0.4
     let darkGrayColor = UIColor(white: 0.2, alpha: 1)
     
@@ -33,7 +55,9 @@ class ViewController: UIViewController {
             audioPlayer.numberOfLoops = -1
             audioPlayer.prepareToPlay()
             
-            playing = playing.boolValue
+            if playing {
+                audioPlayer.play()
+            }
         }
     }
     var audioPlayer: AVAudioPlayer!
@@ -45,7 +69,7 @@ class ViewController: UIViewController {
                 audioPlayer.play()
                 
                 UIView.animateWithDuration(animationDuration) {
-                    self.view.backgroundColor = self.darkGrayColor
+                    self.view.backgroundColor = self.currentMusic.backgroundColor
                     self.playButton.tintColor = UIColor.whiteColor()
                 }
             }
@@ -54,7 +78,7 @@ class ViewController: UIViewController {
                 
                 UIView.animateWithDuration(animationDuration) {
                     self.view.backgroundColor = UIColor.whiteColor()
-                    self.playButton.tintColor = self.darkGrayColor
+                    self.playButton.tintColor = self.currentMusic.backgroundColor
                 }
             }
         }
@@ -95,7 +119,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentMusicURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("rain", ofType: "m4a")!)
+        currentMusic = .Rain
         
         playing = false
     }
@@ -118,14 +142,41 @@ class ViewController: UIViewController {
         
         switch sender {
         case cafeMusicButton:
-            currentMusicURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("cafe", ofType: "m4a")!)
+            currentMusic = .Cafe
         case rainMusicButton:
-            currentMusicURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("rain", ofType: "m4a")!)
+            currentMusic = .Rain
         case nightMusicButton:
-            currentMusicURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("night", ofType: "m4a")!)
+            currentMusic = .Night
         default:
             break
         }
+        
+        let upperView = UIView(frame: view.frame)
+        upperView.backgroundColor = playing ? currentMusic.backgroundColor : UIColor.whiteColor()
+        
+        let upperPlayButton = UIButton(frame: playButton.frame)
+        upperPlayButton.setImage(UIImage(named: currentMusic.rawValue), forState: .Normal)
+        upperPlayButton.tintColor = playing ? UIColor.whiteColor() : currentMusic.backgroundColor
+        upperView.addSubview(upperPlayButton)
+        
+        view.insertSubview(upperView, belowSubview: musicSwitcherStackView)
+        
+        let maskLayer = CALayer()
+        maskLayer.frame = sender.convertRect(sender.bounds, toView: view)
+        maskLayer.backgroundColor = UIColor.blackColor().CGColor
+        maskLayer.cornerRadius = maskLayer.frame.height / 2
+        upperView.layer.mask = maskLayer
+        
+        UIView.animateWithDuration(1, animations: {
+            maskLayer.bounds = CGRectApplyAffineTransform(upperView.bounds, CGAffineTransformMakeScale(2, 2))
+            maskLayer.cornerRadius = maskLayer.frame.width / 2
+        }, completion: { _ in
+            self.view.backgroundColor = self.playing ? self.currentMusic.backgroundColor : UIColor.whiteColor()
+            self.playButton.setImage(UIImage(named: self.currentMusic.rawValue), forState: .Normal)
+            self.playButton.tintColor = self.playing ? UIColor.whiteColor() : self.currentMusic.backgroundColor
+
+            upperView.removeFromSuperview()
+        })
     }
 
     @IBAction func playTapped(sender: UIButton) {

@@ -1,0 +1,20 @@
+PODS:
+  - EasyAnimation (0.7.0)
+
+DEPENDENCIES:
+  - EasyAnimation (from `https://github.com/icanzilb/EasyAnimation.git`, branch `swift2`)
+
+EXTERNAL SOURCES:
+  EasyAnimation:
+    :branch: swift2
+    :git: https://github.com/icanzilb/EasyAnimation.git
+
+CHECKOUT OPTIONS:
+  EasyAnimation:
+    :commit: e27a4fa156647f0bf4ddbc73244d8a52105a4887
+    :git: https://github.com/icanzilb/EasyAnimation.git
+
+SPEC CHECKSUMS:
+  EasyAnimation: f58cd2cb74807f67280a2aff7a6e5bf8da423c19
+
+COCOAPODS: 0.38.0
